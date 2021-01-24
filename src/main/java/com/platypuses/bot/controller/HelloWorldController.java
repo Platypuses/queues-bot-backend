@@ -1,0 +1,17 @@
+package com.platypuses.bot.controller;
+
+import com.platypuses.bot.model.response.HelloWorldResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1")
+public class HelloWorldController {
+
+  @GetMapping("/hello")
+  public HelloWorldResponse helloWorld() {
+    return new HelloWorldResponse("Hello, World!");
+  }
+
+}

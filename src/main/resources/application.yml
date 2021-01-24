@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:8070}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_DB_HOST:localhost:5432}/${POSTGRES_DB_NAME:bot_backend}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+          time_zone: UTC
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+logging:
+  level:
+    com.platypuses.bot: info
+    root: info
+  file:
+    name: ${LOGS_DIRECTORY:logs}/bot-backend.log
+  pattern:
+    dateformat: dd-MM-yyyy HH:mm:ss.SSS, Europe/Minsk
+  logback:
+    rollingpolicy:
+      max-history: 30
+      max-file-size: 10MB
+      file-name-pattern: ${LOGS_DIRECTORY:logs}/archived/bot-backend.%d{dd-MM-yyyy}.%i.log
