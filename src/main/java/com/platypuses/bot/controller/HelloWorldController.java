@@ -11,7 +11,7 @@ public class HelloWorldController {
 
   @GetMapping("/hello")
   public HelloWorldResponse helloWorld() {
-    return new HelloWorldResponse("Hello, World!");
+    return new HelloWorldResponse("Hello, World");
   }
 
 }
